@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Webhook Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>GitHub Webhook Events</h1>
+        <div id="events-container">
+            <!-- Events will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            function fetchEvents() {
+                $.ajax({
+                    url: '/get_events',  // The route in Flask to fetch events
+                    type: 'GET',
+                    success: function(response) {
+                        // Update UI with fetched events
+                        $('#events-container').html(response);
+                    },
+                    error: function(error) {
+                        console.log('Error fetching events:', error);
+                    }
+                });
+            }
+
+            // Fetch events initially and then every 15 seconds
+            fetchEvents();
+            setInterval(fetchEvents, 15000);
+        });
+    </script>
+</body>
+</html>
