@@ -18,30 +18,36 @@ The project consists of two main components:
 ## Installation
 
 1. Clone the repository:
-
-git clone https://github.com/your-username/action-repo.git
-git clone https://github.com/your-username/webhook-repo.git
-
-2. Install dependencies:
-
+   
+git clone https://github.com/aminuaminaldo/action-repo
+git clone https://github.com/aminuaminaldo/webhook-repo
+3. Install dependencies:
 cd webhook-repo
 pip install -r requirements.txt
 
-3. Set up MongoDB:
+
+4. Set up MongoDB:
    - Install MongoDB locally or use a cloud service like MongoDB Atlas.
    - Update the MongoDB connection URL in `app.py` with your database credentials.
 
-4. Configure GitHub webhooks:
+5. Expose Flask backend using ngrok:
+   - Download and install ngrok from https://ngrok.com/download.
+   - Run ngrok to expose your local server:
+ngrok http http://127.0.0.1:5000
+Copy the generated ngrok URL in the forwarded url (e.g., `https://<ngrok_subdomain>.ngrok.io`).
+and you can see the UI
+
+6. Configure GitHub webhooks:
    - In the action-repo settings, add webhook URLs pointing to the Flask endpoint (`/webhook`) of webhook-repo.
    - Select the events to trigger the webhook (e.g., "Push", "Pull Request", "Merge").
 
-5. Run the Flask backend:
-
+7. Run the Flask backend:
 python app.py or flask run by setting up (export FLASK_APP=app.py) in command and then call the "flask run"
 
-6. Open the frontend UI:
+8. Open the frontend UI:
    - Access `index.html` in your browser.
    - You should see the latest repository events displayed in the UI.
+   - you can make changes (e.g., "Push", "Pull Request", "Merge"). to the action-repo https://github.com/aminuaminaldo/action-repo to add the events or data in MongoDB.
 
 ## Usage
 
