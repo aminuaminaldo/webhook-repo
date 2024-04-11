@@ -21,10 +21,10 @@ The project consists of two main components:
    
 git clone https://github.com/aminuaminaldo/action-repo
 git clone https://github.com/aminuaminaldo/webhook-repo
+
 3. Install dependencies:
 cd webhook-repo
 pip install -r requirements.txt
-
 
 4. Set up MongoDB:
    - Install MongoDB locally or use a cloud service like MongoDB Atlas.
